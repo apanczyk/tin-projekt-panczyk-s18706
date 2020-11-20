@@ -1,0 +1,51 @@
+@media all and (max-width: 720px) {
+    header {
+        flex-direction: column;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    header a {
+        align-self: center;
+    }
+
+    header img {
+        align-self: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        flex-basis: 50%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+        row-gap:unset;
+        margin-left: unset;
+    }
+
+
+    .form .errors-text {
+        margin-bottom: 1rem;
+    }
+
+    .form-buttons {
+        grid-column: 1 / span 1; 
+    }
+}
+
+@media all and (max-width: 400px) {
+    nav ul li {
+        flex-basis: 100%;
+    }
+}

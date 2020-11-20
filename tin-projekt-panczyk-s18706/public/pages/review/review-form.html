@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin "Wirtualny Krytyk"</title>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationReviewForm.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/mobile.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Michelin "Wirtualny krytyk"</h1>
+        <a href="../../index.html">
+            <img src="../../images/logo.png" alt="Michelin" class="header-img">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="../visitor/visitor-list.html">Gość</a></li>
+            <li><a href="../meal/meal-list.html">Danie</a></li>
+            <li><a href="review-list.html" class="active">Recenzja</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Dodaj nową recenzję</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for=" visitor">Gość:<abbr title="required" aria-label="required">*</abbr></label>
+            <select id="visitor" name="visitor">
+                <option value="" selected disabled hidden>=Wybierz gościa=</option>
+                <option>Jan Kowalski</option>
+                <option>Krzysztof Nowak</option>
+            </select>
+            <span id="errorVisitor" class="errors-text"></span>
+
+            <label for="meal">Potrawa:<abbr title="required" aria-label="required">*</abbr></label>
+            <select id="meal" name="meal">
+                <option value="" selected disabled hidden>=Wybierz potrawę=</option>
+                <option>Pizza Pepperoni</option>
+                <option>Pizza Neapolitana</option>
+            </select>
+            <span id="errorMeal" class="errors-text"></span>
+
+            <label for="rate">Ocena:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="number" id="rate" name="rate" placeholder="od 1 do 5">
+            <span id="errorRate" class="errors-text"></span>
+
+            <label for="date">Data recenzji:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="date" id="date" name="date" min="2020-01-01">
+            <span id="errorDate" class="errors-text"></span>
+
+            <label for="message">Treść recenzji:</label>
+            <textarea name="message" id="message" maxlength="100" rows="3"
+                placeholder="2-100 znaków (opcjonalnie)"></textarea>
+            <span id="errorMessage" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" value="Dodaj" class="form-button-submit" />
+                <a href="review-list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+
+
+
+    <footer>
+        Arkadiusz, Pańczyk, s18706
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin "Wirtualny Krytyk"</title>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationVisitorForm.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/mobile.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Michelin "Wirtualny krytyk"</h1>
+        <a href="../../index.html">
+            <img src="../../images/logo.png" alt="Michelin" class="header-img">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="visitor-list.html" class="active">Gość</a></li>
+            <li><a href="../meal/meal-list.html">Danie</a></li>
+            <li><a href="../review/review-list.html">Recenzja</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Dodaj nowego gościa</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for="firstName">Imię:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="firstName" id="firstName" placeholder="2-50 znaków" />
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="lastName">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="lastName" id="lastName" placeholder="2-50 znaków" />
+            <span id="errorLastName" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" value="Dodaj" class="form-button-submit" />
+                <a href="visitor-list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+
+
+
+    <footer>
+        Arkadiusz, Pańczyk, s18706
+    </footer>
+
+</body>
+
+</html>

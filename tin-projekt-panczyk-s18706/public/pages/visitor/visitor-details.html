@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin "Wirtualny Krytyk"</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/mobile.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Michelin "Wirtualny krytyk"</h1>
+        <a href="../../index.html">
+            <img src="../../images/logo.png" alt="Michelin" class="header-img">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="visitor-list.html" class="active">Gość</a></li>
+            <li><a href="../meal/meal-list.html">Danie</a></li>
+            <li><a href="../review/review-list.html">Recenzja</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Szczegóły gościa</h2>
+        <form class="details">
+            <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" value="Jan" id="firstName" disabled />
+
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" name="lastName" value="Kowalski" id="lastName" disabled />
+
+        </form>
+        <div class="form-buttons">
+            <a href="visitor-edit.html" class="list-actions-button-edit">Edytuj</a>
+        </div>
+
+        <h2>Ocenione dania</h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Nazwa dania</th>
+                    <th>Ocena</th>
+                    <th>Data Recenzji</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pizza Pepperoni</td>
+                    <td>5</td>
+                    <td>20-10-2020</td>
+                </tr>
+                <tr>
+                    <td>Pizza Napoletana</td>
+                    <td>4</td>
+                    <td>10-10-2020</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-buttons">
+            <a href="visitor-list.html" class="list-actions-button-edit">Powrót</a>
+        </div>
+    </main>
+
+
+
+    <footer>
+        Arkadiusz, Pańczyk, s18706
+    </footer>
+
+</body>
+
+</html>
