@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin "Wirtualny Krytyk"</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mobile.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Michelin "Wirtualny krytyk"</h1>
+        <a href="/">
+            <img src="/images/logo.png" alt="Michelin" class="header-img">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
+            <li><a href="/visitors" class="<%= navLocation == 'visitor' ? 'active' : ''%>">Gość</a></li>
+            <li><a href="/meals" class="<%= navLocation == 'meal' ? 'active' : ''%>">Danie</a></li>
+            <li><a href="/reviews" class="<%= navLocation == 'review' ? 'active' : ''%>">Recenzja</a></li>
+        </ul>
+    </nav>
