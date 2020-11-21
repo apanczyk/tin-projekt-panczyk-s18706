@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michelin "Wirtualny Krytyk"</title>
-    <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="../../css/mobile.css" />
-</head>
-
-<body>
-
-    <header>
-        <h1>Michelin "Wirtualny krytyk"</h1>
-        <a href="../../index.html">
-            <img src="../../images/logo.png" alt="Michelin" class="header-img">
-        </a>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="../../index.html">Strona główna</a></li>
-            <li><a href="../visitor/visitor-list.html">Gość</a></li>
-            <li><a href="../meal/meal-list.html">Danie</a></li>
-            <li><a href="review-list.html" class="active">Recenzja</a></li>
-        </ul>
-    </nav>
-
+<%- include('../../fragments/header.ejs') %>
     <main>
         <h2>Szczegóły recenzję</h2>
         <form class="details">
@@ -42,7 +14,7 @@
                 <option>Pizza Neapolitana</option>
             </select>
 
-            <label for="rate">Ocena (od 1 do 5):</label>
+            <label for="rate">Ocena:</label>
             <input type="number" id="rate" name="rate" min="1" max="5" value="4" disabled>
 
             <label for="date">Data recenzji:</label>
@@ -52,18 +24,9 @@
             <textarea name="message" id="message" maxlength="100" rows="3" disabled>Bardzo polecam.</textarea>
 
             <div class="form-buttons">
-                <a href="review-edit.html" class="list-actions-button-edit">Edytuj</a>
-                <a href="review-list.html" class="list-actions-button-edit">Powrót</a>
+                <a href="/reviews/edit/1" class="list-actions-button-edit">Edytuj</a>
+                <a href="/reviews" class="list-actions-button-edit">Powrót</a>
             </div>
         </form>
     </main>
-
-
-
-    <footer>
-        Arkadiusz, Pańczyk, s18706
-    </footer>
-
-</body>
-
-</html>
+<%- include('../../fragments/footer.ejs') %>

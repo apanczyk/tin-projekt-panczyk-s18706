@@ -7,11 +7,11 @@
     <h2>Edycja potrawy</h2>
     <form class="form" novalidate onsubmit="return validateForm();">
         <label for="meal">Nazwa:<abbr title="required" aria-label="required">*</abbr></label>
-        <input type="text" name="meal" value="Pizza Pepperoni" id="meal" />
+        <input type="text" name="meal" value="Pizza Pepperoni" id="meal" placeholder="2-50 znaków"/>
         <span id="errorMeal" class="errors-text"></span>
 
         <label for="description">Opis:<abbr title="required" aria-label="required">*</abbr></label>
-        <textarea name="description" id="description" maxlength="100" rows="3">Pizza z dodatkiem Pepperoni</textarea>
+        <textarea name="description" id="description" maxlength="100" rows="3" placeholder="2-100 znaków">Pizza z dodatkiem Pepperoni</textarea>
         <span id="errorDescription" class="errors-text"></span>
 
         <div class="form-buttons">

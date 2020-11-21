@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michelin "Wirtualny Krytyk"</title>
+<%- include('../../fragments/header.ejs') %>
     <script type="application/javascript" src="../../js/validationCommon.js"></script>
     <script type="application/javascript" src="../../js/validationReviewForm.js"></script>
-    <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="../../css/mobile.css" />
-</head>
-
-<body>
-
-    <header>
-        <h1>Michelin "Wirtualny krytyk"</h1>
-        <a href="../../index.html">
-            <img src="../../images/logo.png" alt="Michelin" class="header-img">
-        </a>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="../../index.html">Strona główna</a></li>
-            <li><a href="../visitor/visitor-list.html">Gość</a></li>
-            <li><a href="../meal/meal-list.html">Danie</a></li>
-            <li><a href="review-list.html" class="active">Recenzja</a></li>
-        </ul>
-    </nav>
 
     <main>
         <h2>Dodaj nową recenzję</h2>
@@ -53,7 +26,7 @@
             <span id="errorRate" class="errors-text"></span>
 
             <label for="date">Data recenzji:<abbr title="required" aria-label="required">*</abbr></label>
-            <input type="date" id="date" name="date" min="2020-01-01">
+            <input type="date" id="date" name="date" min="2020-01-01" placeholder="np.: 2020-01-01">
             <span id="errorDate" class="errors-text"></span>
 
             <label for="message">Treść recenzji:</label>
@@ -64,17 +37,8 @@
             <div class="form-buttons">
                 <p id="errorsSummary" class="errors-text"></p>
                 <input type="submit" value="Dodaj" class="form-button-submit" />
-                <a href="review-list.html" class="form-button-cancel">Anuluj</a>
+                <a href="/reviews" class="form-button-cancel">Anuluj</a>
             </div>
         </form>
     </main>
-
-
-
-    <footer>
-        Arkadiusz, Pańczyk, s18706
-    </footer>
-
-</body>
-
-</html>
+<%- include('../../fragments/footer.ejs') %>
