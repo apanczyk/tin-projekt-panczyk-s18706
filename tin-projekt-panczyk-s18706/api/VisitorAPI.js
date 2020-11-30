@@ -1,4 +1,5 @@
-const VisitorRepository = require('../repository/mysql2/VisitorRepository');
+// const VisitorRepository = require('../repository/mysql2/VisitorRepository');
+const VisitorRepository = require('../repository/sequelize/VisitorRepository');
 
 exports.getVisitors = (req, res, next) => {
     VisitorRepository.getVisitors()

@@ -31,6 +31,11 @@ app.use('/reviews', reviewRouter);
 app.use('/api/visitors', visitorApiRouter);
 app.use('/api/meals', mealApiRouter);
 app.use('/api/reviews', reviewApiRouter);
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+  .catch(err => {
+    console.log(err);
+  });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

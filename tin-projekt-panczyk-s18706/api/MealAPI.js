@@ -1,4 +1,5 @@
-const MealRepository = require('../repository/mysql2/MealRepository');
+// const MealRepository = require('../repository/mysql2/MealRepository');
+const MealRepository = require('../repository/sequelize/MealRepository');
 
 exports.getMeals = (req, res, next) => {
     MealRepository.getMeals()

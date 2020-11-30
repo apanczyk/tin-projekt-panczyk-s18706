@@ -1,4 +1,5 @@
-const ReviewRepository = require('../repository/mysql2/ReviewRepository');
+// const ReviewRepository = require('../repository/mysql2/ReviewRepository');
+const ReviewRepository = require('../repository/sequelize/ReviewRepository');
 
 exports.getReviews = (req, res, next) => {
     ReviewRepository.getReviews()
