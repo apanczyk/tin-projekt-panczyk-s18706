@@ -9,6 +9,8 @@ var visitorRouter = require('./routes/visitorRoute');
 var mealRouter = require('./routes/mealRoute');
 var reviewRouter = require('./routes/reviewRoute');
 var visitorApiRouter = require('./routes/api/visitorApiRoute');
+var mealApiRouter = require('./routes/api/mealApiRoute');
+var reviewApiRouter = require('./routes/api/reviewApiRoute');
 
 var app = express();
 
@@ -27,6 +29,8 @@ app.use('/visitors', visitorRouter);
 app.use('/meals', mealRouter);
 app.use('/reviews', reviewRouter);
 app.use('/api/visitors', visitorApiRouter);
+app.use('/api/meals', mealApiRouter);
+app.use('/api/reviews', reviewApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

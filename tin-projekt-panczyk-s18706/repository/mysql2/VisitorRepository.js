@@ -16,8 +16,8 @@ exports.getVisitorById = (visitorId) => {
     const query = `SELECT v._id as _id, v.firstName, v.lastName, review._id as review_id,
         review.rate, review.date, meal._id as meal_id, review.message, meal.name, meal.description 
     FROM Visitor v 
-    left join Review review on review._id = v._id
-    left join Meal meal on review._id = meal._id 
+    left join Review review on review.visitor_id = v._id
+    left join Meal meal on review.meal_id = meal._id 
     where v._id = ?`
     return db.promise().query(query, [visitorId])
         .then((results, fields) => {
