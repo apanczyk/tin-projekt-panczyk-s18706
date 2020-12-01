@@ -159,17 +159,6 @@ main h2 {
     font-size: 0.8rem;
 }
 
-.button-add {
-    padding: 0.5rem 1rem;
-}
-
-.button-add {
-    background-color: #27ae60;
-}
-
-.button-add:hover {
-    background-color: #2ecc71;
-}
 
 button, 
 input, 
@@ -248,7 +237,7 @@ abbr[title='required'] {
 }
 
 .form-buttons{
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 .form-details {
