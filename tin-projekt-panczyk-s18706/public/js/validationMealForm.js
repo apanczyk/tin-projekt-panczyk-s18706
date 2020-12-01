@@ -1,5 +1,5 @@
 function validateForm() {
-    const mealInput = document.getElementById('meal');
+    const mealInput = document.getElementById('name');
     const descriptionInput = document.getElementById('description');
 
     const errorMeal = document.getElementById('errorMeal');

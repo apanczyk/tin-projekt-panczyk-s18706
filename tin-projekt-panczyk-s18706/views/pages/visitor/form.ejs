@@ -20,7 +20,7 @@
 
         <% if (formMode == 'showDetails') { %>
         <div class="form-buttons">
-            <a href="/visitors/edit/<%= visitor._id %>" class="list-actions-button-edit">Edytuj</a>
+            <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel">Edytuj</a>
         </div>
         <% } %>
 
@@ -40,7 +40,7 @@
                     <tr>
                         <td><a href="/meals/details/<%= v.meal._id %>"><%= v.meal.name %></a></td>
                         <td><%= v.rate %></td>
-                        <td><%= v.date.toISOString().split('T')[0] %></td>
+                        <td><%= v.date %></td>
                     </tr>
                     <% } %>
                 </tbody>
@@ -54,7 +54,7 @@
             <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
             <a class="form-button-cancel" href="/visitors">Anuluj</a>
             <% } else { %>
-            <a class="list-actions-button-edit" href="/visitors">Powrót</a>
+            <a class="form-button-cancel" href="/visitors">Powrót</a>
             <% } %>
         </div>
     </form>

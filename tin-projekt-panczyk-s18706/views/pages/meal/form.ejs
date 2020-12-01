@@ -1,5 +1,4 @@
 <%- include('../../fragments/header.ejs') %>
-
 <script type="application/javascript" src="../../js/validationCommon.js"></script>
 <script type="application/javascript" src="../../js/validationMealForm.js"></script>
 
@@ -20,7 +19,7 @@
 
         <% if (formMode == 'showDetails') { %>
         <div class="form-buttons">
-            <a href="/meals/edit/<%= meal._id %>" class="list-actions-button-edit">Edytuj</a>
+            <a href="/meals/edit/<%= meal._id %>" class="form-button-cancel">Edytuj</a>
         </div>
         <% } %>
 
@@ -38,11 +37,11 @@
                 <tbody>
                     <% for (let v of meal.reviews) { %>
                     <tr>
-                        <td><a href="/visitors/details/<%= v.visitor._id %>"><%= v.visitor.firstName %>
+                        <td><a href="/visitor/details/<%= v.visitor._id %>"><%= v.visitor.firstName %>
                                 <%= v.visitor.lastName %></a>
                         </td>
                         <td><%= v.rate %></td>
-                        <td><%= v.date.toISOString().split('T')[0] %></td>
+                        <td><%= v.date %></td>
                     </tr>
                     <% } %>
                 </tbody>
@@ -56,7 +55,7 @@
             <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
             <a class="form-button-cancel" href="/meals">Anuluj</a>
             <% } else { %>
-            <a class="list-actions-button-edit" href="/meals">Powrót</a>
+            <a class="form-button-cancel" href="/meals">Powrót</a>
             <% } %>
         </div>
     </form>

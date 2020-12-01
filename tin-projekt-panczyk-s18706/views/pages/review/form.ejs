@@ -8,7 +8,7 @@
 
         <input type="hidden" name="_id" value="<%= review._id %>">
         <label for=" visitor">Gość:<abbr title="required" aria-label="required">*</abbr></label>
-        <select id="visitor" name="visitorId" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <select id="visitor" name="visitor_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <option value="" selected>--- Wybierz gościa ---</option>
             <% for (let i=0; i<allVisitors.length; i++) { let visitor = allVisitors[i]; %>
             <option value="<%= visitor._id %>" label="<%= visitor.firstName + ' ' + visitor.lastName %>"
@@ -19,7 +19,7 @@
         <span id="errorVisitor" class="errors-text"></span>
 
         <label for="meal">Potrawa:<abbr title="required" aria-label="required">*</abbr></label>
-        <select id="meal" name="mealId" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <select id="meal" name="meal_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <option value="" selected>--- Wybierz potrawę ---</option>
             <% for (let i=0; i<allMeals.length; i++) { let meal = allMeals[i]; %>
             <option value="<%= meal._id %>" label="<%= meal.name %>"
@@ -43,19 +43,19 @@
             <%= (formMode == 'showDetails') ? 'disabled' : '' %> /><%= review.message %></textarea>
         <span id="errorMessage" class="errors-text"></span>
 
-        <% if (formMode == 'showDetails') { %>
         <div class="form-buttons">
-            <a href="/reviews/edit/<%= review._id %>" class="list-actions-button-edit">Edytuj</a>
         </div>
-        <% } %>
 
         <div class="form-buttons">
+            <% if (formMode == 'showDetails') { %>
+            <a href="/reviews/edit/<%= review._id %>" class="form-button-cancel">Edytuj</a>
+            <% } %>
             <p id="errorsSummary" class="errors-text"></p>
             <% if (formMode != 'showDetails') { %>
             <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
             <a class="form-button-cancel" href="/reviews">Anuluj</a>
             <% } else { %>
-            <a class="list-actions-button-edit" href="/reviews">Powrót</a>
+            <a class="form-button-cancel" href="/reviews">Powrót</a>
             <% } %>
         </div>
     </form>
