@@ -10,39 +10,26 @@
             </tr>
         </thead>
         <tbody>
+            <% for (let meal of meals) { %>
             <tr>
-                <td>Pizza Pepperoni</td>
+                <td> <%= meal.name %> </td>
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="meals/details/1" class="list-actions-button-details">Szczegóły</a>
+                            <a href="meals/details/<%=meal._id%>" class="list-actions-button-details">Szczegóły</a></li>
+                        <li>
+                            <a href="meals/edit/<%=meal._id%>" class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="meals/edit/1" class="list-actions-button-edit">Edytuj</a>
+                            <a href="meals/delete/<%=meal._id%>" class="list-actions-button-delete">Usuń</a>
                         </li>
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
+
                     </ul>
                 </td>
             </tr>
-            <tr>
-                <td>Pizza Napoletana</td>
-                <td>
-                    <ul class="list-actions">
-                        <li>
-                            <a href="meals/details/1" class="list-actions-button-details">Szczegóły</a>
-                        </li>
-                        <li>
-                            <a href="meals/edit/1" class="list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <% } %>
         </tbody>
+
     </table>
     <p><a href="meals/add" class="button-add">Dodaj nową potrawe</a></p>
 </main>

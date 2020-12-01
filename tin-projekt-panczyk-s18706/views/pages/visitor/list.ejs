@@ -11,40 +11,26 @@
             </tr>
         </thead>
         <tbody>
+            <% for (let visitor of visitors) { %>
             <tr>
-                <td>Jan</td>
-                <td>Kowalski</td>
+                <td><%= visitor.firstName %></td>
+                <td><%= visitor.lastName %></td>
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="visitors/details/1" class="list-actions-button-details">Szczegóły</a>
+                            <a href="visitors/details/<%=visitor._id%>"
+                                class="list-actions-button-details">Szczegóły</a></li>
+                        <li>
+                            <a href="visitors/edit/<%=visitor._id%>" class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="visitors/edit/1" class="list-actions-button-edit">Edytuj</a>
+                            <a href="visitors/delete/<%=visitor._id%>" class="list-actions-button-delete">Usuń</a>
                         </li>
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
+
                     </ul>
                 </td>
             </tr>
-            <tr>
-                <td>Krzysztof</td>
-                <td>Nowak</td>
-                <td>
-                    <ul class="list-actions">
-                        <li>
-                            <a href="visitors/details/1" class="list-actions-button-details">Szczegóły</a>
-                        </li>
-                        <li>
-                            <a href="visitors/edit/1" class="list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <% } %>
         </tbody>
     </table>
     <p><a href="visitors/add" class="button-add">Dodaj nowego gościa</a></p>

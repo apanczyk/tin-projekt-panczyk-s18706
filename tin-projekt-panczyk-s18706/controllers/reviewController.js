@@ -1,5 +1,13 @@
+const ReviewRepository = require('../repository/sequelize/ReviewRepository');
+
 exports.showReviewList = (req, res, next) => {
-    res.render('pages/review/list', { navLocation: 'review' });
+    ReviewRepository.getReviews()
+        .then(reviews => {
+            res.render('pages/review/list', {
+                reviews: reviews,
+                navLocation: 'review'
+            });
+        });
 }
 
 exports.showReviewAdd = (req, res, next) => {
