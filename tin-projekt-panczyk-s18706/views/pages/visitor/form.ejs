@@ -1,64 +1,83 @@
 <%- include('../../fragments/header.ejs') %>
-<script type="application/javascript" src="../../js/validationCommon.js"></script>
-<script type="application/javascript" src="../../js/validationVisitorForm.js"></script>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationVisitorForm.js"></script>
 
 
-<main>
-    <h2><%= pageTitle %></h2>
-    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+    <main>
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate>
 
-        <input type="hidden" name="_id" value="<%= visitor._id %>">
-        <label for="firstName">Imię:<abbr title="required" aria-label="required">*</abbr></label>
-        <input type="text" name="firstName" id="firstName" placeholder="2-50 znaków" value="<%= visitor.firstName %>"
-            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorFirstName" class="errors-text"></span>
+            <input type="hidden" name="_id" value="<%= visitor._id %>">
+            <label for="firstName">Imię:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="firstName" id="firstName" placeholder="2-50 znaków"
+                value="<%= visitor.firstName %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorFirstName" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('firstName')).message %>
+                        <% } %>
+            </span>
 
-        <label for="lastName">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
-        <input type="text" name="lastName" id="lastName" placeholder="2-50 znaków" value="<%= visitor.lastName %>"
-            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorLastName" class="errors-text"></span>
+            <label for="lastName">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="lastName" id="lastName" placeholder="2-50 znaków" value="<%= visitor.lastName %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorLastName" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('lastName'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('lastName')).message %>
+                        <% } %>
+            </span>
 
-        <% if (formMode == 'showDetails') { %>
-        <div class="form-buttons">
-            <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel">Edytuj</a>
-        </div>
-        <% } %>
+            <% if (formMode=='showDetails' ) { %>
+                <div class="form-buttons">
+                    <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel">Edytuj</a>
+                </div>
+                <% } %>
 
-        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
-        <div class="form-details">
-            <h2>Szczegóły recenzji</h2>
-            <table class="table-list">
-                <thead>
-                    <tr>
-                        <th>Danie</th>
-                        <th>Ocena</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (let v of visitor.reviews) { %>
-                    <tr>
-                        <td><a href="/meals/details/<%= v.meal._id %>"><%= v.meal.name %></a></td>
-                        <td><%= v.rate %></td>
-                        <td><%= v.date %></td>
-                    </tr>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
-        <% } %>
+                    <% if (formMode=='showDetails' ) { %>
+                        <div class="form-details">
+                            <h2>Szczegóły recenzji</h2>
+                            <table class="table-list">
+                                <thead>
+                                    <tr>
+                                        <th>Danie</th>
+                                        <th>Ocena</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let v of visitor.reviews) { %>
+                                        <tr>
+                                            <td><a href="/meals/details/<%= v.meal._id %>">
+                                                    <%= v.meal.name %>
+                                                </a></td>
+                                            <td>
+                                                <%= v.rate %>
+                                            </td>
+                                            <td>
+                                                <%= v.date %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <% } %>
 
-        <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text"></p>
-            <% if (formMode != 'showDetails') { %>
-            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-            <a class="form-button-cancel" href="/visitors">Anuluj</a>
-            <% } else { %>
-            <a class="form-button-cancel" href="/visitors">Powrót</a>
-            <% } %>
-        </div>
-    </form>
+                            <div class="form-buttons">
+                                <p id="errorsSummary" class="errors-text"></p>
+                                <% if (formMode !='showDetails' ) { %>
+                                    <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                                    <a class="form-button-cancel" href="/visitors">Anuluj</a>
+                                    <% } else { %>
+                                        <a class="form-button-cancel" href="/visitors">Powrót</a>
+                                        <% } %>
+                            </div>
+        </form>
 
-</main>
+    </main>
 
-<%- include('../../fragments/footer.ejs') %>
+    <%- include('../../fragments/footer.ejs') %>

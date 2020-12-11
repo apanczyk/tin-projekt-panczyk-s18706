@@ -10,18 +10,6 @@ exports.showVisitorList = (req, res, next) => {
         });
 }
 
-// exports.showVisitorAdd = (req, res, next) => {
-//     res.render('pages/visitor/form', { navLocation: 'visitor' });
-// }
-
-// exports.showVisitorDetails = (req, res, next) => {
-//     res.render('pages/visitor/details', { navLocation: 'visitor' });
-// }
-
-// exports.showVisitorEdit = (req, res, next) => {
-//     res.render('pages/visitor/edit', { navLocation: 'visitor' });
-// }
-
 exports.showAddVisitorForm = (req, res, next) => {
     res.render('pages/visitor/form', {
         visitor: {},
@@ -29,7 +17,8 @@ exports.showAddVisitorForm = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj gościa',
         formAction: '/visitors/add',
-        navLocation: 'visitor'
+        navLocation: 'visitor',
+        validationErrors: null
     });
 }
 
@@ -43,7 +32,8 @@ exports.showEditVisitorForm = (req, res, next) => {
                 pageTitle: 'Edycja gościa',
                 btnLabel: 'Edytuj gościa',
                 formAction: '/visitors/edit',
-                navLocation: 'visitor'
+                navLocation: 'visitor',
+                validationErrors: null
             });
         });
 };
@@ -57,7 +47,8 @@ exports.showVisitorDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły gościa',
                 formAction: '',
-                navLocation: 'visitor'
+                navLocation: 'visitor',
+                validationErrors: null
             });
         });
 }
@@ -67,6 +58,17 @@ exports.addVisitor = (req, res, next) => {
     VisitorRepository.createVisitor(visitorData)
         .then(result => {
             res.redirect('/visitors');
+        })
+        .catch(err => {
+            res.render('pages/visitor/form', {
+                visitor: visitorData,
+                pageTitle: 'Nowy gość',
+                formMode: 'createNew',
+                btnLabel: 'Dodaj gościa',
+                formAction: '/visitors/add',
+                navLocation: 'visitor',
+                validationErrors: err.errors
+            });
         });
 };
 
@@ -76,6 +78,21 @@ exports.updateVisitor = (req, res, next) => {
     VisitorRepository.updateVisitor(visitorId, visitorData)
         .then(result => {
             res.redirect('/visitors');
+        })
+        .catch(err => {
+            const visitorId = req.body._id;
+            VisitorRepository.getVisitorById(visitorId)
+                .then(visitor => {
+                    res.render('pages/visitor/form', {
+                        visitor: visitorData,
+                        formMode: 'edit',
+                        pageTitle: 'Edycja gościa',
+                        btnLabel: 'Edytuj gościa',
+                        formAction: '/visitors/edit',
+                        navLocation: 'visitor',
+                        validationErrors: err.errors
+                    });
+                });
         });
 };
 

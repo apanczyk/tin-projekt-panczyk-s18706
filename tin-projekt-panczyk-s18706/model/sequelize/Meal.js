@@ -10,11 +10,29 @@ const Meal = sequelize.define('Meal', {
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane!"
+            },
+            len: {
+                args: [2, 50],
+                msg: "Pole powinno zawierać od 2 do 50 znaków"
+            },
+        }
     },
     description: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane!"
+            },
+            len: {
+                args: [2, 100],
+                msg: "Pole powinno zawierać od 2 do 100 znaków"
+            },
+        }
     }
 });
 

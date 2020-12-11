@@ -10,18 +10,6 @@ exports.showMealList = (req, res, next) => {
         });
 }
 
-// exports.showMealAdd = (req, res, next) => {
-//     res.render('pages/meal/form', { navLocation: 'meal' });
-// }
-
-// exports.showMealDetails = (req, res, next) => {
-//     res.render('pages/meal/details', { navLocation: 'meal' });
-// }
-
-// exports.showMealEdit = (req, res, next) => {
-//     res.render('pages/meal/edit', { navLocation: 'meal' });
-// }
-
 exports.showAddMealForm = (req, res, next) => {
     res.render('pages/meal/form', {
         meal: {},
@@ -29,7 +17,8 @@ exports.showAddMealForm = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj potrawę',
         formAction: '/meals/add',
-        navLocation: 'meal'
+        navLocation: 'meal',
+        validationErrors: null
     });
 }
 
@@ -43,7 +32,8 @@ exports.showEditMealForm = (req, res, next) => {
                 pageTitle: 'Edycja dania',
                 btnLabel: 'Edytuj dania',
                 formAction: '/meals/edit',
-                navLocation: 'meal'
+                navLocation: 'meal',
+                validationErrors: null
             });
         });
 };
@@ -57,7 +47,8 @@ exports.showMealDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły dania',
                 formAction: '',
-                navLocation: 'meal'
+                navLocation: 'meal',
+                validationErrors: null
             });
         });
 }
@@ -67,6 +58,17 @@ exports.addMeal = (req, res, next) => {
     MealRepository.createMeal(mealData)
         .then(result => {
             res.redirect('/meals');
+        })
+        .catch(err => {
+            res.render('pages/meal/form', {
+                meal: mealData,
+                pageTitle: 'Dodaj nową potrawę',
+                formMode: 'createNew',
+                btnLabel: 'Dodaj potrawę',
+                formAction: '/meals/add',
+                navLocation: 'meal',
+                validationErrors: err.errors
+            });
         });
 };
 
@@ -76,6 +78,17 @@ exports.updateMeal = (req, res, next) => {
     MealRepository.updateMeal(mealId, mealData)
         .then(result => {
             res.redirect('/meals');
+        })
+        .catch(err => {
+            res.render('pages/meal/form', {
+                meal: mealData,
+                formMode: 'edit',
+                pageTitle: 'Edycja dania',
+                btnLabel: 'Edytuj dania',
+                formAction: '/meals/edit',
+                navLocation: 'meal',
+                validationErrors: err.errors
+            });
         });
 };
 
