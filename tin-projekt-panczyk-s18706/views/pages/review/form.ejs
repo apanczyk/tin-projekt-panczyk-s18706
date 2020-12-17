@@ -1,65 +1,95 @@
 <%- include('../../fragments/header.ejs') %>
-<script type="application/javascript" src="../../js/validationCommon.js"></script>
-<script type="application/javascript" src="../../js/validationReviewForm.js"></script>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationReviewForm.js"></script>
 
-<main>
-    <h2><%= pageTitle %></h2>
-    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+    <main>
+        <h2>
+            <%= pageTitle %>
+        </h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate>
 
-        <input type="hidden" name="_id" value="<%= review._id %>">
-        <label for=" visitor">Gość:<abbr title="required" aria-label="required">*</abbr></label>
-        <select id="visitor" name="visitor_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <option value="" selected>--- Wybierz gościa ---</option>
-            <% for (let i=0; i<allVisitors.length; i++) { let visitor = allVisitors[i]; %>
-            <option value="<%= visitor._id %>" label="<%= visitor.firstName + ' ' + visitor.lastName %>"
-                <%= (review._id && visitor._id.toString() == review.visitor._id.toString()) ? 'selected' : ''%>>
-            </option>
-            <% } %>
-        </select>
-        <span id="errorVisitor" class="errors-text"></span>
+            <input type="hidden" name="_id" value="<%= review._id %>">
+            <label for=" visitor">Gość:<abbr title="required" aria-label="required">*</abbr></label>
+            <select id="visitor" name="visitor_id" required
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('visitor_id')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
+                <option value="" selected>--- Wybierz gościa ---</option>
+                <% for (let i=0; i<allVisitors.length; i++) { let visitor=allVisitors[i]; %>
+                    <option value="<%= visitor._id %>" label="<%= visitor.firstName + ' ' + visitor.lastName %>"
+                        <%=(review._id && visitor._id.toString()==review.visitor_id.toString()) ? 'selected' : '' %>>
+                    </option>
+                    <% } %>
+            </select>
+            <span id="errorVisitor" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('visitor_id'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('visitor_id')).message %>
+                        <% } %>
+            </span>
 
-        <label for="meal">Potrawa:<abbr title="required" aria-label="required">*</abbr></label>
-        <select id="meal" name="meal_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <option value="" selected>--- Wybierz potrawę ---</option>
-            <% for (let i=0; i<allMeals.length; i++) { let meal = allMeals[i]; %>
-            <option value="<%= meal._id %>" label="<%= meal.name %>"
-                <%= (review._id && meal._id.toString() == review.meal._id.toString()) ? 'selected' : ''%>></option>
-            <% } %>
-        </select>
-        <span id="errorMeal" class="errors-text"></span>
+            <label for="meal">Potrawa:<abbr title="required" aria-label="required">*</abbr></label>
+            <select id="meal" name="meal_id" required
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('meal_id')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
+                <option value="" selected>--- Wybierz potrawę ---</option>
+                <% for (let i=0; i<allMeals.length; i++) { let meal=allMeals[i]; %>
+                    <option value="<%= meal._id %>" label="<%= meal.name %>" <%=(review._id &&
+                        meal._id.toString()==review.meal_id.toString()) ? 'selected' : '' %>></option>
+                    <% } %>
+            </select>
+            <span id="errorMeal" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('meal_id'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('meal_id')).message %>
+                        <% } %>
+            </span>
 
-        <label for="rate">Ocena:<abbr title="required" aria-label="required">*</abbr></label>
-        <input type="number" name="rate" id="rate" placeholder="od 1 do 5" value="<%= review.rate %>"
-            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorRate" class="errors-text"></span>
+            <label for="rate">Ocena:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="number" name="rate" id="rate" placeholder="od 1 do 5" value="<%= review.rate %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('rate')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorRate" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('rate'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('rate')).message %>
+                        <% } %>
+            </span>
 
-        <label for="date">Data recenzji:<abbr title="required" aria-label="required">*</abbr></label>
-        <input type="date" name="date" id="date" min="2020-01-01" placeholder="np.: 2020-01-01"
-            value="<%= review.date %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorDate" class="errors-text"></span>
+            <label for="date">Data recenzji:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="date" name="date" id="date" min="2020-01-01" placeholder="np.: 2020-01-01"
+                value="<%= review.date %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('date')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorDate" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('date'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('date')).message %>
+                        <% } %>
+            </span>
 
-        <label for="message">Treść recenzji:</label>
-        <textarea type="text" name="message" id="message" maxlength="100" rows="3" placeholder="2-100 znaków"
-            <%= (formMode == 'showDetails') ? 'disabled' : '' %> /><%= review.message %></textarea>
-        <span id="errorMessage" class="errors-text"></span>
+            <label for="message">Treść recenzji:</label>
+            <textarea type="text" name="message" id="message" maxlength="100" rows="3" placeholder="2-100 znaków"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('message')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> /><%= review.message %></textarea>
+            <span id="errorMessage" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('message'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('message')).message %>
+                        <% } %>
+            </span>
 
-        <div class="form-buttons">
-        </div>
+            <div class="form-buttons">
+            </div>
 
-        <div class="form-buttons">
-            <% if (formMode == 'showDetails') { %>
-            <a href="/reviews/edit/<%= review._id %>" class="form-button-cancel">Edytuj</a>
-            <% } %>
-            <p id="errorsSummary" class="errors-text"></p>
-            <% if (formMode != 'showDetails') { %>
-            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-            <a class="form-button-cancel" href="/reviews">Anuluj</a>
-            <% } else { %>
-            <a class="form-button-cancel" href="/reviews">Powrót</a>
-            <% } %>
-        </div>
-    </form>
-</main>
+            <div class="form-buttons">
+                <% if (formMode=='showDetails' ) { %>
+                    <a href="/reviews/edit/<%= review._id %>" class="form-button-cancel">Edytuj</a>
+                    <% } %>
+                        <p id="errorsSummary" class="errors-text"></p>
+                        <% if (formMode !='showDetails' ) { %>
+                            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/reviews">Anuluj</a>
+                            <% } else { %>
+                                <a class="form-button-cancel" href="/reviews">Powrót</a>
+                                <% } %>
+            </div>
+        </form>
+    </main>
 
 
-<%- include('../../fragments/footer.ejs') %>
+    <%- include('../../fragments/footer.ejs') %>

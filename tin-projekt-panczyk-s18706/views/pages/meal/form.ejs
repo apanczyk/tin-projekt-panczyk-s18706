@@ -11,15 +11,17 @@
             <input type="hidden" name="_id" value="<%= meal._id %>">
             <label for="name">Nazwa:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="text" name="name" id="name" placeholder="2-50 znaków" value="<%= meal.name %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('name')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
             <span id="errorMeal" class="errors-text">
-                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('meal'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('meal')).message %>
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('name'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('name')).message %>
                         <% } %>
             </span>
 
             <label for="description">Opis:<abbr title="required" aria-label="required">*</abbr></label>
             <textarea type="text" name="description" id="description" maxlength="100" rows="3"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('description')) ? 'error-input' : '') : '' %>"
                 placeholder="2-100 znaków" <%=(formMode=='showDetails' ) ? 'disabled' : ''
                 %> /><%= meal.description %></textarea>
             <span id="errorDescription" class="errors-text">

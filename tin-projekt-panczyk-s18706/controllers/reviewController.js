@@ -29,7 +29,8 @@ exports.showAddReviewForm = (req, res, next) => {
                 pageTitle: 'Nowa recenzja',
                 btnLabel: 'Dodaj recenzje',
                 formAction: '/reviews/add',
-                navLocation: 'review'
+                navLocation: 'review',
+                validationErrors: null
             });
         });
 }
@@ -49,13 +50,16 @@ exports.showEditReviewForm = (req, res, next) => {
                     allMeals = meals;
                     res.render('pages/review/form', {
                         review: review,
+                        visitor_id: review.visitor_id,
+                        meal_id: review.meal_id,
                         formMode: 'edit',
                         allVisitors: allVisitors,
                         allMeals: allMeals,
                         pageTitle: 'Edycja recenzji',
                         btnLabel: 'Edytuj recenzje',
                         formAction: '/reviews/edit',
-                        navLocation: 'review'
+                        navLocation: 'review',
+                        validationErrors: null
                     });
                 });
         });
@@ -75,12 +79,15 @@ exports.showReviewDetails = (req, res, next) => {
                     allMeals = meals;
                     res.render('pages/review/form', {
                         review: review,
+                        visitor_id: review.visitor_id,
+                        meal_id: review.meal_id,
                         formMode: 'showDetails',
                         allVisitors: allVisitors,
                         allMeals: allMeals,
                         pageTitle: 'Szczegóły recenzji',
                         formAction: '',
-                        navLocation: 'review'
+                        navLocation: 'review',
+                        validationErrors: null
                     });
                 });
         });
@@ -91,6 +98,31 @@ exports.addReview = (req, res, next) => {
     ReviewRepository.createReview(reviewData)
         .then(result => {
             res.redirect('/reviews');
+        }).catch(err => {
+
+            let allVisitors, allMeals;
+            VisitorRepository.getVisitors()
+                .then(visitors => {
+                    allVisitors = visitors;
+                    return MealRepository.getMeals();
+                })
+                .then(meals => {
+                    allMeals = meals;
+                    reviewData._id = -1;
+                    res.render('pages/review/form', {
+                        review: reviewData,
+                        visitor_id: reviewData.visitor_id,
+                        meal_id: reviewData.meal_id,
+                        formMode: 'createNew',
+                        allVisitors: allVisitors,
+                        allMeals: allMeals,
+                        pageTitle: 'Nowa recenzja',
+                        btnLabel: 'Dodaj recenzje',
+                        formAction: '/reviews/add',
+                        navLocation: 'review',
+                        validationErrors: err.errors
+                    });
+                });
         });
 };
 
@@ -100,6 +132,42 @@ exports.updateReview = (req, res, next) => {
     ReviewRepository.updateReview(reviewId, reviewData)
         .then(result => {
             res.redirect('/reviews');
+        }).catch(err => {
+
+            ReviewRepository.getReviewById(reviewId)
+                .then(review => {
+
+                    console.log(review);
+                    console.log('=================='); console.log('==================');
+                    console.log(reviewData);
+                    let allVisitors, allMeals;
+                    VisitorRepository.getVisitors()
+                        .then(visitors => {
+                            allVisitors = visitors;
+                            return MealRepository.getMeals();
+                        })
+                        .then(meals => {
+                            allMeals = meals;
+                            // reviewData.visitor.visitor._id = reviewData.visitor_id;
+                            // reviewData.meal.meal._id = reviewData.meal_id;
+
+                            console.log(reviewData.visitor_id + ' ' + reviewData.meal_id)
+
+                            res.render('pages/review/form', {
+                                review: reviewData,
+                                visitor_id: reviewData.visitor_id,
+                                meal_id: reviewData.meal_id,
+                                formMode: 'edit',
+                                allVisitors: allVisitors,
+                                allMeals: allMeals,
+                                pageTitle: 'Edycja recenzji',
+                                btnLabel: 'Edytuj recenzje',
+                                formAction: '/reviews/edit',
+                                navLocation: 'review',
+                                validationErrors: err.errors
+                            });
+                        });
+                });
         });
 };
 
