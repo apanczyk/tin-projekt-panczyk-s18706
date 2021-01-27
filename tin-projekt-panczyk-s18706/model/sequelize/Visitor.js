@@ -33,6 +33,14 @@ const Visitor = sequelize.define('Visitor', {
                 msg: "Pole powinno zawierać od 2 do 50 znaków"
             },
         }
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

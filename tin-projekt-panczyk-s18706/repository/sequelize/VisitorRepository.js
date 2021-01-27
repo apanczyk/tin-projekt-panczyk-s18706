@@ -38,3 +38,9 @@ exports.deleteVisitor = (visitorId) => {
         where: { _id: visitorId }
     });
 };
+
+exports.findByEmail = (email) => {
+    return Visitor.findOne({
+        where: { email: email }
+    });
+}

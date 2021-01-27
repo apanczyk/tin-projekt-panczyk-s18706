@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var visitorRouter = require('./routes/visitorRoute');
@@ -11,6 +12,7 @@ var reviewRouter = require('./routes/reviewRoute');
 var visitorApiRouter = require('./routes/api/visitorApiRoute');
 var mealApiRouter = require('./routes/api/mealApiRoute');
 var reviewApiRouter = require('./routes/api/reviewApiRoute');
+var authUtils = require('./util/authUtils');
 
 var app = express();
 
@@ -24,8 +26,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'my_secret_password',
+  resave: false
+}));
+
+app.use((req, res, next) => {
+  const loggedUser = req.session.loggedUser;
+  res.locals.loggedUser = loggedUser;
+  if (!res.locals.loginError) {
+    res.locals.loginError = undefined;
+  }
+  next();
+});
+
 app.use('/', indexRouter);
-app.use('/visitors', visitorRouter);
+app.use('/visitors', authUtils.permitAuthenticatedUser, visitorRouter);
 app.use('/meals', mealRouter);
 app.use('/reviews', reviewRouter);
 app.use('/api/visitors', visitorApiRouter);

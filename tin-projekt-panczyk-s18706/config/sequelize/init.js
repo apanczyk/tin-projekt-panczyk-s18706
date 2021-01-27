@@ -18,10 +18,13 @@ module.exports = () => {
         })
         .then(visitors => {
             if (!visitors || visitors.length == 0) {
+                const authUtil = require('../../util/authUtils');
+                const passHash = authUtil.hashPassword('12345');
+
                 return Visitor.bulkCreate([
-                    { firstName: 'Jan', lastName: 'Nowak' },
-                    { firstName: 'Krzysztof', lastName: 'Kowalski' },
-                    { firstName: 'Anna', lastName: 'Kowalczyk' },
+                    { firstName: 'Jan', lastName: 'Nowak', email: 'jan.nowak@email.com', password: passHash },
+                    { firstName: 'Krzysztof', lastName: 'Kowalski', email: 'kkowalski@email.com', password: passHash },
+                    { firstName: 'Anna', lastName: 'Kowalczyk', email: 'akowalczyk@email.com', password: passHash },
                 ])
                     .then(() => {
                         return Visitor.findAll();
