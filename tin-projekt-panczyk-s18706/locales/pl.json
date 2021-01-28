@@ -1,58 +1,154 @@
 {
-    "main-page": {
-        "content": "Strona główna"
-    },
-    "nav": {
-        "main-page": "Strona główna",
-        "visitors": "Gość",
-        "meals": "Danie",
-        "reviews": "Recenzja"
-    },
-    "list": {
-        "actions": {
-            "title": "Akcje",
-            "details": "Szczegóły",
-            "edit": "Edytuj",
-            "delete": "Usuń"
-        }
-    },
-    "form": {
-        "actions": {
-            "return": "Powrót",
-            "edit": "Edytuj",
-            "cancel": "Anuluj"
-        }
-    },
-    "visitor": {
-        "fields": {
-            "firstName": "Imię",
-            "lastName": "Nazwisko",
-            "email": "Email"
-        },
-        "list": {
-            "title": "Goście",
-            "addNew": "Dodaj nowego gościa",
-            "noData": "Brak gości w bazie",
-            "pageTitle": "Lista gości"
-        },
-        "form": {
-            "employment": "Historia recenzji",
-            "add": {
-                "pageTitle": "Dodawanie pracownika",
-                "btnLabel": "Dodaj pracownika",
-                "confirm": {
-                    "header": "Potwierdzenie operacji",
-                    "text": "Pomyślnie dodano pracownika"
-                }
-            },
-            "edit": {
-                "pageTitle": "Edycja pracownika",
-                "btnLabel": "Zapisz zmiany",
-                "confirm": {
-                    "header": "Potwierdzenie operacji",
-                    "text": "Pomyślnie zaktualizowano pracownika"
-                }
-            }
-        }
-    }
+	"main-page": {
+		"content": "Strona główna",
+		"aboutUs": "O nas",
+		"title": "Michelin 'Wirtualny krytyk'"
+	},
+	"logging": {
+		"logIn": "Logowanie",
+		"logOut": "Wyloguj się",
+		"email": "Email",
+		"password": "Hasło",
+		"text": "Zalogowany jako: "
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"visitors": "Gość",
+		"meals": "Danie",
+		"reviews": "Recenzja"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj"
+		}
+	},
+	"visitor": {
+		"fields": {
+			"firstName": "Imię",
+			"lastName": "Nazwisko",
+			"email": "Email"
+		},
+		"list": {
+			"title": "Goście",
+			"addNew": "Dodaj nowego gościa",
+			"noData": "Brak gości w bazie",
+			"pageTitle": "Lista gości"
+		},
+		"form": {
+			"details": "Szczegóły gościa",
+			"reviews": "Szczegóły recenzji",
+			"add": {
+				"pageTitle": "Dodawanie gościa",
+				"btnLabel": "Dodaj gościa",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano gościa"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja gościa",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano gościa"
+				}
+			},
+			"content": {
+				"firstName": "Imię",
+				"lastName": "Nazwisko",
+				"email": "Email",
+				"password": "Haslo",
+				"meal": "Danie",
+				"rate": "Ocena",
+				"date": "Data"
+			}
+		}
+	},
+	"meal": {
+		"fields": {
+			"name": "Nazwa",
+			"title": "meal.fields.title"
+		},
+		"list": {
+			"title": "Potrawy",
+			"addNew": "Dodaj nową potrawę",
+			"noData": "Brak potraw w bazie",
+			"pageTitle": "Lista potraw"
+		},
+		"form": {
+			"details": "Szczegóły potrawy",
+			"reviews": "Ocenione przez",
+			"add": {
+				"pageTitle": "Dodawanie potrawy",
+				"btnLabel": "Dodaj potrawę",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano potrawę"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja potrawy",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano potrawy"
+				}
+			},
+			"content": {
+				"name": "Nazwa",
+				"description": "Opis",
+				"firstLastName": "Imię i nazwisko",
+				"rate": "Ocena",
+				"date": "Data"
+			}
+		}
+	},
+	"review": {
+		"fields": {
+			"visitor": "Gość",
+			"meal": "Danie"
+		},
+		"list": {
+			"title": "Recenzje",
+			"addNew": "Dodaj nową recenzję",
+			"noData": "Brak recenzji w bazie",
+			"pageTitle": "Lista recenzji"
+		},
+		"form": {
+			"details": "Szczegóły recenzji",
+			"add": {
+				"pageTitle": "Dodawanie recenzji",
+				"btnLabel": "Dodaj recenzję",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano recenzję"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja recenzji",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano recenzje"
+				}
+			},
+			"content": {
+				"visitor": "Gość",
+				"meal": "Potrawa",
+				"description": "Treść recenzji",
+				"rate": "Ocena",
+				"date": "Data recenzji"
+			}
+		}
+	}
 }

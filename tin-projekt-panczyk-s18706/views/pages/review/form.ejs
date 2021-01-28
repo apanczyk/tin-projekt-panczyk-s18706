@@ -9,7 +9,7 @@
         <form class="form" method="post" action="<%=formAction%>" novalidate>
 
             <input type="hidden" name="_id" value="<%= review._id %>">
-            <label for=" visitor">Gość:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for=" visitor"><%= __('review.form.content.visitor') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <select id="visitor" name="visitor_id" required
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('visitor_id')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
@@ -26,7 +26,7 @@
                         <% } %>
             </span>
 
-            <label for="meal">Potrawa:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="meal"><%= __('review.form.content.meal') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <select id="meal" name="meal_id" required
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('meal_id')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
@@ -42,7 +42,7 @@
                         <% } %>
             </span>
 
-            <label for="rate">Ocena:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="rate"><%= __('review.form.content.rate') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="number" name="rate" id="rate" placeholder="od 1 do 5" value="<%= review.rate %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('rate')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
@@ -52,7 +52,7 @@
                         <% } %>
             </span>
 
-            <label for="date">Data recenzji:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="date"><%= __('review.form.content.date') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="date" name="date" id="date" min="2020-01-01" placeholder="np.: 2020-01-01"
                 value="<%= review.date %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('date')) ? 'error-input' : '') : '' %>"
@@ -63,7 +63,7 @@
                         <% } %>
             </span>
 
-            <label for="message">Treść recenzji:</label>
+            <label for="message"><%= __('review.form.content.description') %>:</label>
             <textarea type="text" name="message" id="message" maxlength="100" rows="3" placeholder="2-100 znaków"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('message')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> /><%= review.message %></textarea>
@@ -78,14 +78,14 @@
 
             <div class="form-buttons">
                 <% if (formMode=='showDetails' ) { %>
-                    <a href="/reviews/edit/<%= review._id %>" class="form-button-cancel">Edytuj</a>
+                    <a href="/reviews/edit/<%= review._id %>" class="form-button-cancel"><%= __('form.actions.edit') %></a>
                     <% } %>
                         <p id="errorsSummary" class="errors-text"></p>
                         <% if (formMode !='showDetails' ) { %>
                             <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                            <a class="form-button-cancel" href="/reviews">Anuluj</a>
+                            <a class="form-button-cancel" href="/reviews"><%= __('form.actions.cancel') %></a>
                             <% } else { %>
-                                <a class="form-button-cancel" href="/reviews">Powrót</a>
+                                <a class="form-button-cancel" href="/reviews"><%= __('form.actions.return') %></a>
                                 <% } %>
             </div>
         </form>

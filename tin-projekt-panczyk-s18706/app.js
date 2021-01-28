@@ -21,7 +21,7 @@ i18n.configure({
   locales: ['pl', 'en'], // języki dostępne w aplikacji. Dla każdego z nich należy utworzyć osobny słownik 
   directory: path.join(__dirname, 'locales'), // ścieżka do katalogu, w którym znajdują się słowniki
   objectNotation: true, // umożliwia korzstanie z zagnieżdżonych kluczy w notacji obiektowej
-  cookie: 'acme-hr-lang', //nazwa cookies, które nasza aplikacja będzie wykorzystywać do przechowania informacji o języku aktualnie wybranym przez użytkownika
+  cookie: 'michelin-lang', //nazwa cookies, które nasza aplikacja będzie wykorzystywać do przechowania informacji o języku aktualnie wybranym przez użytkownika
 });
 
 // view engine setup
@@ -33,11 +33,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(i18n.init);
 
 app.use(session({
   secret: 'my_secret_password',
   resave: false
 }));
+
+app.use((req, res, next) => {
+  if(!res.locals.lang) {
+      const currentLang = req.cookies['michelin-lang'];
+      res.locals.lang = currentLang;
+  }
+  next();
+});
 
 app.use((req, res, next) => {
   const loggedUser = req.session.loggedUser;

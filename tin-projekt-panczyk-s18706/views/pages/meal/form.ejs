@@ -9,7 +9,7 @@
         <form class="form" method="post" action="<%=formAction%>" novalidate>
 
             <input type="hidden" name="_id" value="<%= meal._id %>">
-            <label for="name">Nazwa:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="name"><%= __('meal.form.content.name') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="text" name="name" id="name" placeholder="2-50 znaków" value="<%= meal.name %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('name')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
@@ -19,7 +19,7 @@
                         <% } %>
             </span>
 
-            <label for="description">Opis:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="description"><%= __('meal.form.content.description') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <textarea type="text" name="description" id="description" maxlength="100" rows="3"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('description')) ? 'error-input' : '') : '' %>"
                 placeholder="2-100 znaków" <%=(formMode=='showDetails' ) ? 'disabled' : ''
@@ -32,7 +32,7 @@
 
             <% if (formMode=='showDetails' ) { %>
                 <div class="form-buttons">
-                    <a href="/meals/edit/<%= meal._id %>" class="form-button-cancel">Edytuj</a>
+                    <a href="/meals/edit/<%= meal._id %>" class="form-button-cancel"><%= __('form.actions.edit') %></a>
                 </div>
                 <% } %>
 
@@ -42,9 +42,9 @@
                             <table class="table-list">
                                 <thead>
                                     <tr>
-                                        <th>Imię i Nazwisko</th>
-                                        <th>Ocena</th>
-                                        <th>Data Recenzji</th>
+                                        <th><%= __('meal.form.content.firstLastName') %></th>
+                                        <th><%= __('meal.form.content.rate') %></th>
+                                        <th><%= __('meal.form.content.date') %></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,9 +72,9 @@
                                 <p id="errorsSummary" class="errors-text"></p>
                                 <% if (formMode !='showDetails' ) { %>
                                     <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                                    <a class="form-button-cancel" href="/meals">Anuluj</a>
+                                    <a class="form-button-cancel" href="/meals"><%= __('form.actions.cancel') %></a>
                                     <% } else { %>
-                                        <a class="form-button-cancel" href="/meals">Powrót</a>
+                                        <a class="form-button-cancel" href="/meals"><%= __('form.actions.return') %></a>
                                         <% } %>
                             </div>
         </form>

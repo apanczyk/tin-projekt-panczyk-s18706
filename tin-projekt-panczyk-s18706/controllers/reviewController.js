@@ -7,7 +7,8 @@ exports.showReviewList = (req, res, next) => {
         .then(reviews => {
             res.render('pages/review/list', {
                 reviews: reviews,
-                navLocation: 'review'
+                navLocation: 'review',
+                pageTitle: req.__('review.list.pageTitle')
             });
         });
 }
@@ -26,8 +27,8 @@ exports.showAddReviewForm = (req, res, next) => {
                 formMode: 'createNew',
                 allVisitors: allVisitors,
                 allMeals: allMeals,
-                pageTitle: 'Nowa recenzja',
-                btnLabel: 'Dodaj recenzje',
+                pageTitle: req.__('review.form.add.pageTitle'),
+                btnLabel: req.__('visitor.form.add.btnLabel'),
                 formAction: '/reviews/add',
                 navLocation: 'review',
                 validationErrors: null
@@ -55,8 +56,8 @@ exports.showEditReviewForm = (req, res, next) => {
                         formMode: 'edit',
                         allVisitors: allVisitors,
                         allMeals: allMeals,
-                        pageTitle: 'Edycja recenzji',
-                        btnLabel: 'Edytuj recenzje',
+                        pageTitle: req.__('review.form.edit.pageTitle'),
+                        btnLabel: req.__('review.form.edit.btnLabel'),
                         formAction: '/reviews/edit',
                         navLocation: 'review',
                         validationErrors: null
@@ -84,8 +85,7 @@ exports.showReviewDetails = (req, res, next) => {
                         formMode: 'showDetails',
                         allVisitors: allVisitors,
                         allMeals: allMeals,
-                        pageTitle: 'Szczegóły recenzji',
-                        formAction: '',
+                        pageTitle: req.__('review.form.details'),                        formAction: '',
                         navLocation: 'review',
                         validationErrors: null
                     });
@@ -116,8 +116,8 @@ exports.addReview = (req, res, next) => {
                         formMode: 'createNew',
                         allVisitors: allVisitors,
                         allMeals: allMeals,
-                        pageTitle: 'Nowa recenzja',
-                        btnLabel: 'Dodaj recenzje',
+                        pageTitle: req.__('review.form.add.pageTitle'),
+                        btnLabel: req.__('review.form.add.btnLabel'),
                         formAction: '/reviews/add',
                         navLocation: 'review',
                         validationErrors: err.errors
@@ -160,8 +160,8 @@ exports.updateReview = (req, res, next) => {
                                 formMode: 'edit',
                                 allVisitors: allVisitors,
                                 allMeals: allMeals,
-                                pageTitle: 'Edycja recenzji',
-                                btnLabel: 'Edytuj recenzje',
+                                pageTitle: req.__('review.form.edit.pageTitle'),
+                                btnLabel: req.__('review.form.edit.btnLabel'),
                                 formAction: '/reviews/edit',
                                 navLocation: 'review',
                                 validationErrors: err.errors

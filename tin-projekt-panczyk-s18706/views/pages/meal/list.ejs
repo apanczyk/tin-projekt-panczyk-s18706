@@ -1,12 +1,12 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-    <h2>Lista potraw</h2>
+    <h2><%= pageTitle %></h2>
     <table class="table-list">
         <thead>
             <tr>
-                <th>Nazwa</th>
-                <th>Akcje</th>
+                <th><%= __('meal.fields.name') %></th>
+                <th><%= __('list.actions.title') %></th>
             </tr>
         </thead>
         <tbody>
@@ -16,12 +16,12 @@
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="meals/details/<%=meal._id%>" class="list-actions-button-details">Szczegóły</a></li>
+                            <a href="meals/details/<%=meal._id%>" class="list-actions-button-details"><%= __('list.actions.details') %></a></li>
                         <li>
-                            <a href="meals/edit/<%=meal._id%>" class="list-actions-button-edit">Edytuj</a>
+                            <a href="meals/edit/<%=meal._id%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                         </li>
                         <li>
-                            <a href="meals/delete/<%=meal._id%>" class="list-actions-button-delete">Usuń</a>
+                            <a href="meals/delete/<%=meal._id%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                         </li>
 
                     </ul>
@@ -31,6 +31,6 @@
         </tbody>
 
     </table>
-    <p><a href="meals/add" class="button-add">Dodaj nową potrawe</a></p>
+    <p><a href="meals/add" class="button-add"><%= __('meal.list.addNew') %></a></p>
 </main>
 <%- include('../../fragments/footer.ejs') %>

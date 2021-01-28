@@ -10,7 +10,7 @@
         <form class="form" method="post" action="<%=formAction%>" novalidate>
 
             <input type="hidden" name="_id" value="<%= visitor._id %>">
-            <label for="firstName">Imię:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="firstName"><%= __('visitor.form.content.firstName') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="text" name="firstName" id="firstName" placeholder="2-50 znaków"
                 value="<%= visitor.firstName %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '') : '' %>"
@@ -21,7 +21,7 @@
                         <% } %>
             </span>
 
-            <label for="lastName">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="lastName"><%= __('visitor.form.content.lastName') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="text" name="lastName" id="lastName" placeholder="2-50 znaków" value="<%= visitor.lastName %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
@@ -31,7 +31,7 @@
                         <% } %>
             </span>
 
-            <label for="email">Email:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="email"><%= __('visitor.form.content.email') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="text" name="email" id="email" value="<%= visitor.email %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
@@ -41,7 +41,7 @@
                         <% } %>
             </span>
 
-            <label for="password">Hasło:<abbr title="required" aria-label="required">*</abbr></label>
+            <label for="password"><%= __('visitor.form.content.password') %>:<abbr title="required" aria-label="required">*</abbr></label>
             <input type="password" name="password" id="password" value="<%= visitor.password %>"
                 class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '') : '' %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
@@ -53,19 +53,19 @@
 
             <% if (formMode=='showDetails' ) { %>
                 <div class="form-buttons">
-                    <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel">Edytuj</a>
+                    <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel"><%= __('form.actions.edit') %></a>
                 </div>
                 <% } %>
 
                     <% if (formMode=='showDetails' ) { %>
                         <div class="form-details">
-                            <h2>Szczegóły recenzji</h2>
+                            <h2><%= __('visitor.form.reviews') %></h2>
                             <table class="table-list">
                                 <thead>
                                     <tr>
-                                        <th>Danie</th>
-                                        <th>Ocena</th>
-                                        <th>Data</th>
+                                        <th><%= __('visitor.form.content.meal') %></th>
+                                        <th><%= __('visitor.form.content.rate') %></th>
+                                        <th><%= __('visitor.form.content.date') %></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -91,9 +91,9 @@
                                 <p id="errorsSummary" class="errors-text"></p>
                                 <% if (formMode !='showDetails' ) { %>
                                     <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                                    <a class="form-button-cancel" href="/visitors">Anuluj</a>
+                                    <a class="form-button-cancel" href="/visitors"><%= __('form.actions.cancel') %></a>
                                     <% } else { %>
-                                        <a class="form-button-cancel" href="/visitors">Powrót</a>
+                                        <a class="form-button-cancel" href="/visitors"><%= __('form.actions.return') %></a>
                                         <% } %>
                             </div>
         </form>

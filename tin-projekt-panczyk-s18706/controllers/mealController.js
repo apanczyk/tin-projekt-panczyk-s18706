@@ -5,7 +5,8 @@ exports.showMealList = (req, res, next) => {
         .then(meals => {
             res.render('pages/meal/list', {
                 meals: meals,
-                navLocation: 'meal'
+                navLocation: 'meal',
+                pageTitle: req.__('meal.list.pageTitle')
             });
         });
 }
@@ -13,9 +14,9 @@ exports.showMealList = (req, res, next) => {
 exports.showAddMealForm = (req, res, next) => {
     res.render('pages/meal/form', {
         meal: {},
-        pageTitle: 'Dodaj nową potrawę',
+        pageTitle: req.__('meal.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Dodaj potrawę',
+        btnLabel: req.__('meal.form.add.btnLabel'),
         formAction: '/meals/add',
         navLocation: 'meal',
         validationErrors: null
@@ -29,8 +30,8 @@ exports.showEditMealForm = (req, res, next) => {
             res.render('pages/meal/form', {
                 meal: meal,
                 formMode: 'edit',
-                pageTitle: 'Edycja dania',
-                btnLabel: 'Edytuj dania',
+                pageTitle: req.__('meal.form.edit.pageTitle'),
+                btnLabel: req.__('meal.form.edit.btnLabel'),
                 formAction: '/meals/edit',
                 navLocation: 'meal',
                 validationErrors: null
@@ -45,7 +46,7 @@ exports.showMealDetails = (req, res, next) => {
             res.render('pages/meal/form', {
                 meal: meal,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły dania',
+                pageTitle: req.__('meal.form.details'),
                 formAction: '',
                 navLocation: 'meal',
                 validationErrors: null
@@ -62,9 +63,9 @@ exports.addMeal = (req, res, next) => {
         .catch(err => {
             res.render('pages/meal/form', {
                 meal: mealData,
-                pageTitle: 'Dodaj nową potrawę',
+                pageTitle: req.__('meal.form.add.pageTitle'),
                 formMode: 'createNew',
-                btnLabel: 'Dodaj potrawę',
+                btnLabel: req.__('meal.form.add.btnLabel'),
                 formAction: '/meals/add',
                 navLocation: 'meal',
                 validationErrors: err.errors
@@ -83,8 +84,8 @@ exports.updateMeal = (req, res, next) => {
             res.render('pages/meal/form', {
                 meal: mealData,
                 formMode: 'edit',
-                pageTitle: 'Edycja dania',
-                btnLabel: 'Edytuj dania',
+                pageTitle: req.__('meal.form.edit.pageTitle'),
+                btnLabel: req.__('meal.form.edit.btnLabel'),
                 formAction: '/meals/edit',
                 navLocation: 'meal',
                 validationErrors: err.errors

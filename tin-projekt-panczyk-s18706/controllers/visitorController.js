@@ -5,7 +5,8 @@ exports.showVisitorList = (req, res, next) => {
         .then(visitors => {
             res.render('pages/visitor/list', {
                 visitors: visitors,
-                navLocation: 'visitor'
+                navLocation: 'visitor',
+                pageTitle: req.__('visitor.list.pageTitle')
             });
         });
 }
@@ -13,9 +14,9 @@ exports.showVisitorList = (req, res, next) => {
 exports.showAddVisitorForm = (req, res, next) => {
     res.render('pages/visitor/form', {
         visitor: {},
-        pageTitle: 'Nowy gość',
+        pageTitle: req.__('visitor.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Dodaj gościa',
+        btnLabel: req.__('visitor.form.add.btnLabel'),
         formAction: '/visitors/add',
         navLocation: 'visitor',
         validationErrors: null
@@ -29,8 +30,8 @@ exports.showEditVisitorForm = (req, res, next) => {
             res.render('pages/visitor/form', {
                 visitor: visitor,
                 formMode: 'edit',
-                pageTitle: 'Edycja gościa',
-                btnLabel: 'Edytuj gościa',
+                pageTitle: req.__('visitor.form.edit.pageTitle'),
+                btnLabel: req.__('visitor.form.edit.btnLabel'),
                 formAction: '/visitors/edit',
                 navLocation: 'visitor',
                 validationErrors: null
@@ -45,7 +46,7 @@ exports.showVisitorDetails = (req, res, next) => {
             res.render('pages/visitor/form', {
                 visitor: visitor,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły gościa',
+                pageTitle: req.__('visitor.form.details'),
                 formAction: '',
                 navLocation: 'visitor',
                 validationErrors: null
@@ -62,9 +63,9 @@ exports.addVisitor = (req, res, next) => {
         .catch(err => {
             res.render('pages/visitor/form', {
                 visitor: visitorData,
-                pageTitle: 'Nowy gość',
+                pageTitle: req.__('visitor.form.add.pageTitle'),
                 formMode: 'createNew',
-                btnLabel: 'Dodaj gościa',
+                btnLabel: req.__('visitor.form.add.btnLabel'),
                 formAction: '/visitors/add',
                 navLocation: 'visitor',
                 validationErrors: err.errors
@@ -86,8 +87,8 @@ exports.updateVisitor = (req, res, next) => {
                     res.render('pages/visitor/form', {
                         visitor: visitorData,
                         formMode: 'edit',
-                        pageTitle: 'Edycja gościa',
-                        btnLabel: 'Edytuj gościa',
+                        pageTitle: req.__('visitor.form.edit.pageTitle'),
+                        btnLabel: req.__('visitor.form.edit.btnLabel'),
                         formAction: '/visitors/edit',
                         navLocation: 'visitor',
                         validationErrors: err.errors

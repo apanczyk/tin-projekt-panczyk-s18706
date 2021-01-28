@@ -1,6 +1,15 @@
 {
 	"main-page": {
-		"content": "Main Page"
+		"content": "Main Page",
+		"aboutUs": "About us",
+		"title": "Michelin 'Virutal critic'"
+	},
+	"logging": {
+		"logIn": "Log in",
+		"logOut": "Log out",
+		"email": "Email",
+		"password": "Password",
+		"text": "Logged as: "
 	},
 	"nav": {
 		"main-page": "Main page",
@@ -8,21 +17,21 @@
 		"meals": "Meals",
 		"reviews": "Reviews"
 	},
-    "list": {
-       "actions": {
-         "title": "Actions",
-         "details": "Details",
-         "edit": "Edit",
-         "delete": "Delete"
-       }
-    },
-    "form": {
-       "actions": {
-          "return": "Return",
-          "edit": "Edit",
-          "cancel": "Cancel"
-      }
-    },
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
 	"visitor": {
 		"fields": {
 			"firstName": "First name",
@@ -36,7 +45,8 @@
 			"pageTitle": "List of visitors"
 		},
 		"form": {
-			"employment": "History of employment",
+			"details": "Visitor details",
+			"reviews": "Details of reviews",
 			"add": {
 				"pageTitle": "Adding a new visitor",
 				"btnLabel": "Add the visitor",
@@ -52,7 +62,93 @@
 					"header": "Confirmation",
 					"text": "The visitor has been successfully updated"
 				}
+			},
+			"content": {
+				"firstName": "First Name",
+				"lastName": "Last Name",
+				"email": "Email",
+				"password": "Password",
+				"meal": "Meal",
+				"rate": "Rate",
+				"date": "Date"
 			}
-        }
-    }
+		}
+	},
+	"meal": {
+		"fields": {
+			"name": "Name",
+			"title": "meal.fields.title"
+		},
+		"list": {
+			"title": "Meals",
+			"addNew": "Add new meal",
+			"noData": "No meals in database",
+			"pageTitle": "Meal list"
+		},
+		"form": {
+			"details": "Meal details",
+			"reviews": "Reviewed by",
+			"add": {
+				"pageTitle": "Adding a new meal",
+				"btnLabel": "Add new meal",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new meal has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editting an meal",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The meal has been successfully updated"
+				}
+			},
+			"content": {
+				"name": "Name",
+				"description": "Description",
+				"firstLastName": "Firstname and lastname",
+				"rate": "Rate",
+				"date": "Date"
+			}
+		}
+	},
+	"review": {
+		"fields": {
+			"visitor": "Visitor",
+			"meal": "Meal"
+		},
+		"list": {
+			"title": "Reviews",
+			"addNew": "Add new review",
+			"noData": "No reviews in database",
+			"pageTitle": "Review list"
+		},
+		"form": {
+			"details": "Review details",
+			"add": {
+				"pageTitle": "Adding a new review",
+				"btnLabel": "Add new review",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new review has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editting an review",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The review has been successfully updated"
+				}
+			},
+			"content": {
+				"visitor": "Visitor",
+				"meal": "Meal",
+				"description": "Description",
+				"rate": "Rate",
+				"date": "Date of review"
+			}
+		}
+	}
 }

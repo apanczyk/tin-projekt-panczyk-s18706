@@ -1,13 +1,13 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-    <h2>Lista gości</h2>
+    <h2> <%= pageTitle %> </h2>
     <table class="table-list">
         <thead>
             <tr>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Akcje</th>
+                <th><%= __('visitor.fields.firstName') %></th>
+                <th><%= __('visitor.fields.lastName') %></th>
+                <th><%= __('list.actions.title') %></th>
             </tr>
         </thead>
         <tbody>
@@ -19,12 +19,12 @@
                     <ul class="list-actions">
                         <li>
                             <a href="visitors/details/<%=visitor._id%>"
-                                class="list-actions-button-details">Szczegóły</a></li>
+                                class="list-actions-button-details"><%= __('list.actions.details') %></a></li>
                         <li>
-                            <a href="visitors/edit/<%=visitor._id%>" class="list-actions-button-edit">Edytuj</a>
+                            <a href="visitors/edit/<%=visitor._id%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                         </li>
                         <li>
-                            <a href="visitors/delete/<%=visitor._id%>" class="list-actions-button-delete">Usuń</a>
+                            <a href="visitors/delete/<%=visitor._id%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                         </li>
 
                     </ul>
@@ -33,7 +33,7 @@
             <% } %>
         </tbody>
     </table>
-    <p><a href="visitors/add" class="button-add">Dodaj nowego gościa</a></p>
+    <p><a href="visitors/add" class="button-add"> <%= __('visitor.list.addNew') %> </a></p>
 </main>
 
 

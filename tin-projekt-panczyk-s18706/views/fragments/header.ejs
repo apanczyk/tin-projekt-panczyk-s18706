@@ -13,26 +13,26 @@
 
 
     <header>
-        <h1>Michelin "Wirtualny krytyk"</h1>
+        <h1><%= __('main-page.title') %></h1>
         <% if(!loggedUser) { %>
             <div id="login">
-                <h5>Logowanie</h5>
+                <h5><%= __('logging.logIn') %></h5>
                 <form method="post" action="/login" novalidate>
-                    <label for="loginEmail">Email:</label>
+                    <label for="loginEmail"><%= __('logging.email') %>:</label>
                     <input type="email" id="loginEmail" name="email">
 
-                    <label for="loginPassword">Hasło:</label>
+                    <label for="loginPassword"><%= __('logging.password') %>:</label>
                     <input type="password" id="loginPassword" name="password">
 
-                    <input type="submit" value="Zaloguj się">
+                    <input type="submit" value="<%= __('logging.logIn') %>">
                     <span id="loginErrors">
                         <%= loginError ? loginError : '' %>
                     </span>
                 </form>
             </div>
             <% } else { %>
-                <span>Jesteś zalogowany jako: <%=loggedUser.firstName + " " + loggedUser.lastName%></span>
-                <a href="/logout">Wyloguj się</a>
+                <span><%= __('logging.text') %><%=loggedUser.firstName + " " + loggedUser.lastName%></span>
+                <a href="/logout"><%= __('logging.logOut') %></a>
                 <% } %>
                     <a href="/">
                         <img src="/images/logo.png" alt="Michelin" class="header-img">
@@ -41,12 +41,16 @@
 
     <nav>
         <ul>
-            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%= __('nav.main-page') %></a></li>
             <% if(loggedUser) { %>
-                <li><a href="/visitors" class="<%= navLocation == 'visitor' ? 'active' : ''%>">Gość</a></li>
+                <li><a href="/visitors" class="<%= navLocation == 'visitor' ? 'active' : ''%>"><%= __('nav.visitors') %></a></li>
                 <% } %>
-                    <li><a href="/meals" class="<%= navLocation == 'meal' ? 'active' : ''%>">Danie</a></li>
-                    <li><a href="/reviews" class="<%= navLocation == 'review' ? 'active' : ''%>">Recenzja</a>
+                    <li><a href="/meals" class="<%= navLocation == 'meal' ? 'active' : ''%>"><%= __('nav.meals') %></a></li>
+                    <li><a href="/reviews" class="<%= navLocation == 'review' ? 'active' : ''%>"><%= __('nav.reviews') %></a>
                     </li>
+        </ul>
+        <ul>
+            <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+            <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
         </ul>
     </nav>
