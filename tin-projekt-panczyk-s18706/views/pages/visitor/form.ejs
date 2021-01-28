@@ -31,6 +31,26 @@
                         <% } %>
             </span>
 
+            <label for="email">Email:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="email" id="email" value="<%= visitor.email %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorEmail" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('email'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('email')).message %>
+                        <% } %>
+            </span>
+
+            <label for="password">Hasło:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="password" name="password" id="password" value="<%= visitor.password %>"
+                class="<%= (validationErrors !== null) ? (validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '') : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorPassword" class="errors-text">
+                <% if ( validationErrors !==null && validationErrors.find(e=> e.path.includes('password'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('password')).message %>
+                        <% } %>
+            </span>
+
             <% if (formMode=='showDetails' ) { %>
                 <div class="form-buttons">
                     <a href="/visitors/edit/<%= visitor._id %>" class="form-button-cancel">Edytuj</a>

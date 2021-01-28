@@ -205,6 +205,8 @@ textarea {
 .details textarea, 
 .form input[type="text"],
 .details input[type="text"],
+.form input[type="password"],
+.details input[type="password"],
 .form input[type="number"],
 .details input[type="number"],
 .form input[type="date"],

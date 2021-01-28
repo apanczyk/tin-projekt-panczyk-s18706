@@ -2,6 +2,8 @@ const Visitor = require("../../model/sequelize/Visitor");
 const Meal = require("../../model/sequelize/Meal");
 const Review = require("../../model/sequelize/Review");
 
+const authUtil = require('../../util/authUtils');
+
 exports.getVisitors = () => {
     return Visitor.findAll();
 };
@@ -23,13 +25,14 @@ exports.getVisitorById = (visitorId) => {
 exports.createVisitor = (newVisitorData) => {
     return Visitor.create({
         firstName: newVisitorData.firstName,
-        lastName: newVisitorData.lastName
+        lastName: newVisitorData.lastName,
+        email: newVisitorData.email,
+        password: authUtil.hashPassword(newVisitorData.password)
     });
 };
 
 exports.updateVisitor = (visitorId, visitorData) => {
-    const firstName = visitorData.firstName;
-    const lastName = visitorData.lastName;
+    visitorData.password = authUtil.hashPassword(visitorData.password);
     return Visitor.update(visitorData, { where: { _id: visitorId } });
 };
 

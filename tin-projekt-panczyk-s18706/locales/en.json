@@ -1,0 +1,58 @@
+{
+	"main-page": {
+		"content": "Main Page"
+	},
+	"nav": {
+		"main-page": "Main page",
+		"visitors": "Visitors",
+		"meals": "Meals",
+		"reviews": "Reviews"
+	},
+    "list": {
+       "actions": {
+         "title": "Actions",
+         "details": "Details",
+         "edit": "Edit",
+         "delete": "Delete"
+       }
+    },
+    "form": {
+       "actions": {
+          "return": "Return",
+          "edit": "Edit",
+          "cancel": "Cancel"
+      }
+    },
+	"visitor": {
+		"fields": {
+			"firstName": "First name",
+			"lastName": "Last name",
+			"email": "Email"
+		},
+		"list": {
+			"title": "Visitors",
+			"addNew": "Add new visitor",
+			"noData": "No visitors in database",
+			"pageTitle": "List of visitors"
+		},
+		"form": {
+			"employment": "History of employment",
+			"add": {
+				"pageTitle": "Adding a new visitor",
+				"btnLabel": "Add the visitor",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new visitor has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing an visitor",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The visitor has been successfully updated"
+				}
+			}
+        }
+    }
+}

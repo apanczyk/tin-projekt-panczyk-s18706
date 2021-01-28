@@ -16,6 +16,14 @@ var authUtils = require('./util/authUtils');
 
 var app = express();
 
+const i18n = require('i18n');
+i18n.configure({
+  locales: ['pl', 'en'], // języki dostępne w aplikacji. Dla każdego z nich należy utworzyć osobny słownik 
+  directory: path.join(__dirname, 'locales'), // ścieżka do katalogu, w którym znajdują się słowniki
+  objectNotation: true, // umożliwia korzstanie z zagnieżdżonych kluczy w notacji obiektowej
+  cookie: 'acme-hr-lang', //nazwa cookies, które nasza aplikacja będzie wykorzystywać do przechowania informacji o języku aktualnie wybranym przez użytkownika
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,7 +31,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
@@ -39,6 +47,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+
 
 app.use('/', indexRouter);
 app.use('/visitors', authUtils.permitAuthenticatedUser, visitorRouter);

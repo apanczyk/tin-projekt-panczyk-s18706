@@ -1,0 +1,58 @@
+{
+    "main-page": {
+        "content": "Strona główna"
+    },
+    "nav": {
+        "main-page": "Strona główna",
+        "visitors": "Gość",
+        "meals": "Danie",
+        "reviews": "Recenzja"
+    },
+    "list": {
+        "actions": {
+            "title": "Akcje",
+            "details": "Szczegóły",
+            "edit": "Edytuj",
+            "delete": "Usuń"
+        }
+    },
+    "form": {
+        "actions": {
+            "return": "Powrót",
+            "edit": "Edytuj",
+            "cancel": "Anuluj"
+        }
+    },
+    "visitor": {
+        "fields": {
+            "firstName": "Imię",
+            "lastName": "Nazwisko",
+            "email": "Email"
+        },
+        "list": {
+            "title": "Goście",
+            "addNew": "Dodaj nowego gościa",
+            "noData": "Brak gości w bazie",
+            "pageTitle": "Lista gości"
+        },
+        "form": {
+            "employment": "Historia recenzji",
+            "add": {
+                "pageTitle": "Dodawanie pracownika",
+                "btnLabel": "Dodaj pracownika",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie dodano pracownika"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edycja pracownika",
+                "btnLabel": "Zapisz zmiany",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie zaktualizowano pracownika"
+                }
+            }
+        }
+    }
+}
